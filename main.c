@@ -280,13 +280,12 @@ void foldLines(int maxlength){
     
     printf("\nExercise 1-22, page 33\n");
     
-    while ((c == getchar()) != EOF)
+    while ((c = getchar()) != EOF)
     {
         ++currline;
         if (currline == maxlength-1)
         {
-            putchar(45); 
-            putchar(13);
+            printf("-\n"); 
             currline = 0;
         }
         putchar(c);
