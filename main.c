@@ -29,6 +29,7 @@ int whiteSpaceCounter();
 int singleSpaceEdit();
 int obviousEscapes();
 int inputHistogram();
+void foldLines(int);
 
 /*
  * 
@@ -51,9 +52,12 @@ int main() {
     singleSpaceEdit();
     printf("\nExercise 1-10, page 19\n");
     obviousEscapes();
-    */
     printf("\nExercise 1-13, page 24\n");
     inputHistogram();
+     */
+    foldLines(50);
+    
+    return 0;
 }
 
 /* C Programming Language Exercise 1-3, page 12
@@ -266,3 +270,30 @@ int inputHistogram() {
         }
     }
 }
+
+/* Exercise 1-22 - fold long input lines into two or more shorter lines 
+ * after the last non-blank character that occurs before the n-th col of input
+ */
+void foldLines(int maxlength){
+    int c;
+    int currline = 0;
+    
+    printf("\nExercise 1-22, page 33\n");
+    
+    while ((c == getchar()) != EOF)
+    {
+        ++currline;
+        if (currline == maxlength-1)
+        {
+            putchar(45); 
+            putchar(13);
+            currline = 0;
+        }
+        putchar(c);
+    }
+}
+
+/* 
+ * Exercise 1-23 & 1-24 - Remove comments from a C program and check for 
+ * rudimentary syntax errors.
+ */
