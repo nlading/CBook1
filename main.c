@@ -17,6 +17,8 @@
 #define LOWER 0     /* lower limit of temp conversion table */
 #define UPPER 300   /* Upper limit */
 #define STEP  20    /* step size */
+#define IN 1        /* Tracks whether execution is in a single state */
+#define OUT 0       /* Tracks whether execution is out of a single state */
 
 /* Function Declarations */
 int fahrConvert();
@@ -26,6 +28,7 @@ int fileCopy();
 int whiteSpaceCounter();
 int singleSpaceEdit();
 int obviousEscapes();
+int inputHistogram();
 
 /*
  * 
@@ -49,6 +52,8 @@ int main() {
     printf("\nExercise 1-10, page 19\n");
     obviousEscapes();
     */
+    printf("\nExercise 1-13, page 24\n");
+    inputHistogram();
 }
 
 /* C Programming Language Exercise 1-3, page 12
@@ -188,6 +193,76 @@ int obviousEscapes(){
             case '\b': putchar ('\\'); putchar ('b'); break;
             case '\\': putchar ('\\'); putchar ('\\'); break;
             default:   putchar (c);
+        }
+    }
+}
+
+/* Exercise 1-13 - Histogram of input 
+ * Produces a horizontal and a vertical histogram of the lengths
+ * of words in an input.
+ */
+int inputHistogram() {
+    int c, i, j;
+    int ndigit[UPPER];
+    int len = 0, max = 0;
+    
+    /* initialize digit counting array to 0 */
+    for (i = 0; i < UPPER; ++i)
+        ndigit[i] = 0;
+    
+    while ((c = getchar()) != EOF)
+        if (c == ' ' || c == '\t' || c == '\n') 
+        {
+            if (len > 0)
+                ++ndigit[len];
+            len = 0;
+        } 
+        else if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))
+        {
+            /* A character is recognized, a word exists */
+            ++len;
+        }
+    
+    /* Produce horizontal histogram */
+    printf("\nHorizontal Histogram of Word Length in Input\n");
+    for (i = 0; i < UPPER; ++i){
+        if (ndigit[i] > 0){
+            printf("%3d: ", i);
+            for (j = 0; j < ndigit[i]; ++j)
+                printf("-");
+            printf("\n");
+        }
+    }
+        
+    /* Produce vertical histogram */
+    /* Find max count */
+    for (i = 0; i < UPPER; ++i){
+        if (ndigit[i] > max)
+            max = ndigit[i];
+    }
+    /* Create histogram "bars" */
+    printf("\nVertical Histogram of Word Length in Input\n");
+    for (i = max; i > 0; --i)
+    {
+        for (j = 0; j < UPPER; ++j)
+        {
+            if (ndigit[j] > 0 && ndigit[j] >= i)
+            {
+                printf("%3s", "|");
+            }
+            else if (ndigit[j] > 0 && ndigit[j] < i)
+            {
+                printf("%3s", " ");
+            }
+        }
+        printf("\n");
+    }
+    /* Print labels */
+    for (i = 0; i < UPPER; ++i)
+    {
+        if (ndigit[i] > 0)
+        {
+            printf("%3d", i);
         }
     }
 }
