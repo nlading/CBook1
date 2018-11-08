@@ -28,9 +28,9 @@ void variableRanges() {
 }
 
 /*
- * Exercise 2-3, page 45 - Convert a string of hexadecimal digits to its 
- * equivalent value. Can convert a series of hex values or just a single one.
+ * Exercise 2-3, page 45 - Convert a string of hexadecimal digits to its
+ * equivalent value.
  */
-int htoi(s){
-    
+int htoi(int s){
+
 }

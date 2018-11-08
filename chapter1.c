@@ -13,18 +13,18 @@
 
 int fahrConvert(){
     float fahr, celsius;
-    
+
     printf("Fahrenheit to Celsius Conversion Table\n");
     printf(" %3s | %6s\n", "F", "C");
     printf("-------------\n");
-    
-    fahr = LOWER; 
+
+    fahr = LOWER;
     while (fahr <= UPPER) {
         celsius = (5.0/9.0) * (fahr-32.0);
         printf(" %3.0f | %6.1f\n", fahr, celsius);
         fahr = fahr + STEP;
     }
-    
+
     return 1;
 }
 
@@ -34,18 +34,18 @@ int fahrConvert(){
  */
 int celConvert() {
     float fahr, celsius;
-    
+
     printf("Celsius to Fahrenheit Conversion Table\n");
     printf(" %3s | %6s\n", "C", "F");
     printf("-------------\n");
-    
+
     celsius = LOWER;
     while (celsius <= UPPER) {
         fahr = ((9.0/5.0) * celsius) + 32.0;
         printf(" %3.0f | %6.1f\n", celsius, fahr);
         celsius = celsius + STEP;
     }
-    
+
     return 1;
 }
 
@@ -55,13 +55,13 @@ int celConvert() {
  */
 int tempConvertForLoop(){
     int fahr;
-    
+
     printf("Fahrenheit to Celsius Conversion Table\n");
     printf(" %3s | %6s \n", "F", "C");
     printf("--------------\n");
     for (fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP)
         printf(" %3d | %6.1f \n", fahr, (5.0/9.0)*(fahr-32));
-    
+
     printf("Fahrenheit to Celsius Conversion Table (Reversed)\n");
     printf(" %3s | %6s \n", "F", "C");
     printf("--------------\n");
@@ -69,15 +69,15 @@ int tempConvertForLoop(){
         printf(" %3d | %6.1f \n", fahr, (5.0/9.0)*(fahr-32));
 }
 
-/* File Copying Example, Page 15 
+/* File Copying Example, Page 15
  * Example interaction:
  * input: This is a new line (hit enter key)
- * output: This is a new line\n 
+ * output: This is a new line\n
  */
 int fileCopy() {
     int c;
     long nc = 0;    /* string counter */
-    
+
     while ((c = getchar()) != EOF) {
         ++nc;
         putchar(c);
@@ -86,14 +86,14 @@ int fileCopy() {
     printf("Count = %ld\n", nc);
 }
 
-/* 
+/*
  * Exercise 1-8 - Count blanks, tabs, and newlines
  * ctrl-d to exit
  */
 int whiteSpaceCounter() {
     int bc = 0, tc = 0, nc = 0;
     int c;
-    
+
     while ((c = getchar()) != EOF) {
         if (c == '\n') {
             ++nc;
@@ -105,7 +105,7 @@ int whiteSpaceCounter() {
             ;
         }
     }
-    
+
     printf("Blank Spaces = %d, Tabs = %d, New Lines = %d\n", bc, tc, nc);
 }
 
@@ -115,10 +115,10 @@ int whiteSpaceCounter() {
 int singleSpaceEdit() {
     int c;
     int sc = 0;     /* space counter, tracks when multiple spaces occur */
-    
+
     while ((c = getchar()) != EOF) {
         if ((c == '\t' || c == ' ') && sc > 0) {
-            /* Do nothing if multiple white space detected */  
+            /* Do nothing if multiple white space detected */
             ;
         } else if (c != ' ' && c != '\t') {
             /* c is a character, print it */
@@ -133,12 +133,12 @@ int singleSpaceEdit() {
 }
 
 /*
- * Exercise 1-10 - Obvious Escapes 
+ * Exercise 1-10 - Obvious Escapes
  * Cannot manage backspace. Apparently "beyond programmatic control"
  */
 int obviousEscapes(){
     int c;
-    
+
     while ((c = getchar()) != EOF){
         switch (c) {
             case '\t': putchar ('\\'); putchar ('t'); break;
@@ -149,7 +149,7 @@ int obviousEscapes(){
     }
 }
 
-/* Exercise 1-13 - Histogram of input 
+/* Exercise 1-13 - Histogram of input
  * Produces a horizontal and a vertical histogram of the lengths
  * of words in an input.
  */
@@ -157,24 +157,24 @@ int inputHistogram() {
     int c, i, j;
     int ndigit[UPPER];
     int len = 0, max = 0;
-    
+
     /* initialize digit counting array to 0 */
     for (i = 0; i < UPPER; ++i)
         ndigit[i] = 0;
-    
+
     while ((c = getchar()) != EOF)
-        if (c == ' ' || c == '\t' || c == '\n') 
+        if (c == ' ' || c == '\t' || c == '\n')
         {
             if (len > 0)
                 ++ndigit[len];
             len = 0;
-        } 
+        }
         else if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))
         {
             /* A character is recognized, a word exists */
             ++len;
         }
-    
+
     /* Produce horizontal histogram */
     printf("\nHorizontal Histogram of Word Length in Input\n");
     for (i = 0; i < UPPER; ++i){
@@ -185,7 +185,7 @@ int inputHistogram() {
             printf("\n");
         }
     }
-        
+
     /* Produce vertical histogram */
     /* Find max count */
     for (i = 0; i < UPPER; ++i){
@@ -219,10 +219,10 @@ int inputHistogram() {
     }
 }
 
-/* Exercise 1-22 - fold long input lines into two or more shorter lines 
+/* Exercise 1-22 - fold long input lines into two or more shorter lines
  * after the last non-blank character that occurs before the n-th col of input
- * 
- * Issues: Adds a space or whitespace character to every end of line. 
+ *
+ * Issues: Adds a space or whitespace character to every end of line.
  *          - Will not pursue a fix for now.
  */
 void foldLines(int maxlength){
@@ -230,9 +230,9 @@ void foldLines(int maxlength){
     int linelen = 0;
     int wordlen = 0;
     char word[UPPER];
-    
+
     printf("\nExercise 1-22, page 33\n");
-    
+
     while ((c = getchar()) != EOF)
     {
        /* Pull next word in the input */
@@ -281,12 +281,12 @@ void foldLines(int maxlength){
     }
 }
 
-/* 
- * Exercise 1-23 & 1-24 - Remove comments from a C program and check for 
+/*
+ * Exercise 1-23 & 1-24 - Remove comments from a C program and check for
  * rudimentary syntax errors.
- * 
- * Checks Syntax one line at a time, as of 11/8/18 it does not have multi-line 
- * functionality. 
+ *
+ * Checks Syntax one line at a time, as of 11/8/18 it does not have multi-line
+ * functionality.
  */
 void syntaxCheck() {
     int c, i, j;
@@ -294,7 +294,7 @@ void syntaxCheck() {
     int startParenthesis = 0, endParaenthesis = 0;
     char currLine[UPPER];
     int lineLen = 0;
-    
+
     char pairedCharacters[10] = {'(', ')',
                                  '{', '}',
                                  '[', ']',
@@ -302,9 +302,9 @@ void syntaxCheck() {
                                  '\'', '\"',
     };
     int pairOccurrances[10] = {0};
-    
+
     printf("\n");
-    
+
     while ((c = getchar()) != EOF)
     {
         /* Traverse input, line by line */
@@ -338,7 +338,7 @@ void syntaxCheck() {
                 printf("\nERROR: Unbalanced single-quote pair on line %d\n", lineCount);
             if ((pairOccurrances[9] % 2) != 0)
                 printf("\nERROR: Unbalanced double-quote pair on line %d\n", lineCount);
-            
+
             /* Reset line string array and counters */
             for (i = 0; i < 10; ++i)
                 pairOccurrances[i] = 0;
