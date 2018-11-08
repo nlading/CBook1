@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/chapter1.o \
+	${OBJECTDIR}/chapter2.o \
 	${OBJECTDIR}/common.o \
 	${OBJECTDIR}/main.o
 
@@ -68,6 +69,11 @@ ${OBJECTDIR}/chapter1.o: chapter1.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/chapter1.o chapter1.c
+
+${OBJECTDIR}/chapter2.o: chapter2.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/chapter2.o chapter2.c
 
 ${OBJECTDIR}/common.o: common.c
 	${MKDIR} -p ${OBJECTDIR}

@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "common.h"
 #include "chapter1.h"
+#include "chapter2.h"
 
 /*
  * 
@@ -39,8 +40,10 @@ int main() {
     printf("\nExercise 1-13, page 24\n");
     inputHistogram();
     foldLines(10);
-    */
     syntaxCheck();
+    */
+    
+    variableRanges();
     
     return 0;
 }
