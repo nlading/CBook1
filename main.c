@@ -46,8 +46,9 @@ int main() {
     /*
     variableRanges();
     */
-    int n = htoi("0x64");
-    printf("%s", n);
+    char s1[] = "This is the first string";
+    char s2[] = "Howdy partner";
+    squeeze();
 
     return 0;
 }

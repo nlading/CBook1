@@ -15,6 +15,6 @@
 #define CHAPTER2_H
 
 void variableRanges();
-int htoi(int);
+void squeeze();
 
 #endif /* CHAPTER2_H */
