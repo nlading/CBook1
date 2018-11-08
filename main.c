@@ -30,6 +30,9 @@ int singleSpaceEdit();
 int obviousEscapes();
 int inputHistogram();
 void foldLines(int);
+void syntaxCheck();
+
+void resetStringArray(char *, int);
 
 /*
  * 
@@ -39,7 +42,7 @@ int main() {
     /*
     printf("hello, world\n");
     printf("\nExercise 1-3, page 12\n");
-    fahrConvert();
+    fahrConvert()
     printf("\nExercise 1-4, page 12\n");
     celConvert();
     printf("\nExercise 1-5, Page 14\n");
@@ -54,8 +57,9 @@ int main() {
     obviousEscapes();
     printf("\nExercise 1-13, page 24\n");
     inputHistogram();
-     */
     foldLines(10);
+    */
+    syntaxCheck();
     
     return 0;
 }
@@ -273,6 +277,9 @@ int inputHistogram() {
 
 /* Exercise 1-22 - fold long input lines into two or more shorter lines 
  * after the last non-blank character that occurs before the n-th col of input
+ * 
+ * Issues: Adds a space or whitespace character to every end of line. 
+ *          - Will not pursue a fix for now.
  */
 void foldLines(int maxlength){
     int c, i;
@@ -333,4 +340,87 @@ void foldLines(int maxlength){
 /* 
  * Exercise 1-23 & 1-24 - Remove comments from a C program and check for 
  * rudimentary syntax errors.
+ * 
+ * Checks Syntax one line at a time, as of 11/8/18 it does not have multi-line 
+ * functionality. 
  */
+void syntaxCheck() {
+    int c, i, j;
+    int lineCount = 1;
+    int startParenthesis = 0, endParaenthesis = 0;
+    char currLine[UPPER];
+    int lineLen = 0;
+    
+    char pairedCharacters[10] = {'(', ')',
+                                 '{', '}',
+                                 '[', ']',
+                                 '<', '>',
+                                 '\'', '\"',
+    };
+    int pairOccurrances[10] = {0};
+    
+    printf("\n");
+    
+    while ((c = getchar()) != EOF)
+    {
+        /* Traverse input, line by line */
+        if (c == '\n')
+        {
+            /* Report missing end of line semicolons */
+            if (currLine[lineLen-1] != 59)
+            {
+                printf("\nERROR: Missing semicolon on line: %d\n", lineCount);
+            }
+            /* Check for balanced brackets/parenthesis/etc. */
+            /* ***Needs to be improved to allow for multi-line syntax */
+            for (i = 0; currLine[i] != 0; ++i)
+            {
+                /* Tally paired characters */
+                for (j = 0; j <= 9; ++j)
+                {
+                    if (currLine[i] == pairedCharacters[j])
+                        pairOccurrances[j] = ++pairOccurrances[j];
+                }
+            }
+            if (pairOccurrances[0] != pairOccurrances[1])
+                printf("\nERROR: Unbalanced () pair on line %d\n", lineCount);
+            if (pairOccurrances[2] != pairOccurrances[3])
+                printf("\nERROR: Unbalanced {} pair on line %d\n", lineCount);
+            if (pairOccurrances[4] != pairOccurrances[5])
+                printf("\nERROR: Unbalanced [] pair on line %d\n", lineCount);
+            if (pairOccurrances[6] != pairOccurrances[7])
+                printf("\nERROR: Unbalanced <> pair on line %d\n", lineCount);
+            if ((pairOccurrances[8] % 2) != 0)
+                printf("\nERROR: Unbalanced single-quote pair on line %d\n", lineCount);
+            if ((pairOccurrances[9] % 2) != 0)
+                printf("\nERROR: Unbalanced double-quote pair on line %d\n", lineCount);
+            
+            /* Reset line string array and counters */
+            for (i = 0; i < 10; ++i)
+                pairOccurrances[i] = 0;
+            resetStringArray(currLine, 0);
+            lineLen = 0;
+            lineCount++;
+        }
+        else
+        {
+            currLine[lineLen] = c;
+            ++lineLen;
+        }
+    }
+}
+
+/*
+ * Sets all values in the passed in array (instring) to a value specified
+ * by (defaultVal) 
+ */
+void resetStringArray(char* instring, int defaultVal){
+    int arraySize = 0;
+    char n;
+    while (instring[arraySize] != 0)
+        ++arraySize;
+    for (int i = 0; i < arraySize; ++i)
+    {
+        instring[i] = defaultVal;
+    }
+}
