@@ -55,7 +55,7 @@ int main() {
     printf("\nExercise 1-13, page 24\n");
     inputHistogram();
      */
-    foldLines(50);
+    foldLines(10);
     
     return 0;
 }
@@ -275,20 +275,58 @@ int inputHistogram() {
  * after the last non-blank character that occurs before the n-th col of input
  */
 void foldLines(int maxlength){
-    int c;
-    int currline = 0;
+    int c, i;
+    int linelen = 0;
+    int wordlen = 0;
+    char word[UPPER];
     
     printf("\nExercise 1-22, page 33\n");
     
     while ((c = getchar()) != EOF)
     {
-        ++currline;
-        if (currline == maxlength-1)
+       /* Pull next word in the input */
+        if (c == ' ' || c == '\t' || c == '\n')
         {
-            printf("-\n"); 
-            currline = 0;
+            /* Print word if added chars is less than max line length */
+            if (linelen + wordlen > maxlength && wordlen <= maxlength)
+            {
+                /* Print word on new line if word cannot fit on current line */
+                printf("\n%s", word);
+                linelen = 0;
+            }
+            else if (linelen + wordlen > maxlength && wordlen > maxlength)
+            {
+                /* Print word over multiple lines if word length > line length */
+                for (i = 0; i < wordlen; ++i)
+                {
+                    if (i > 0 && i % (maxlength-1) == 0)
+                    {
+                        printf("-\n");
+                        linelen = 0;
+                    }
+                    printf("%c", word[i]);
+                    linelen++;
+                }
+            }
+            else
+            {
+                /* Print the word if it fits on the line */
+                printf("%s", word);
+                linelen = linelen + wordlen;
+            }
+            putchar(c);
+            linelen++;
+            wordlen = 0;
+            for (i = 0; i < UPPER; i++)
+            {
+                word[i] = 0;
+            }
         }
-        putchar(c);
+        else
+        {
+            word[wordlen] = c;
+            wordlen++;
+        }
     }
 }
 
