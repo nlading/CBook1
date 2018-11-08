@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   chapter2.h
  * Author: nlading
  *
@@ -15,6 +15,6 @@
 #define CHAPTER2_H
 
 void variableRanges();
+int htoi(int);
 
 #endif /* CHAPTER2_H */
-

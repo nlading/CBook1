@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.c
  * Author: nlading
  *
@@ -17,7 +17,7 @@
 #include "chapter2.h"
 
 /*
- * 
+ *
  */
 int main() {
     /* Chapter 1 */
@@ -30,7 +30,7 @@ int main() {
     printf("\nExercise 1-5, Page 14\n");
     tempConvertForLoop();
     printf("\nExample, page 15\n");
-    fileCopy(); 
+    fileCopy();
     printf("\nExercise 1-8, page 19\n");
     whiteSpaceCounter();
     printf("\nExercise 1-9, page 19\n");
@@ -42,8 +42,12 @@ int main() {
     foldLines(10);
     syntaxCheck();
     */
-    
+    /* Chapter 2 */
+    /*
     variableRanges();
-    
+    */
+    int n = htoi("0x64");
+    printf("%s", n);
+
     return 0;
 }

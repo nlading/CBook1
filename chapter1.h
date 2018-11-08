@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   chapter1.h
  * Author: nlading
  *
@@ -23,14 +23,13 @@
 
 int fahrConvert();
 int celConvert();
-int tempConvertForLoop();
-int fileCopy();
-int whiteSpaceCounter();
-int singleSpaceEdit();
-int obviousEscapes();
-int inputHistogram();
+void tempConvertForLoop();
+void fileCopy();
+void whiteSpaceCounter();
+void singleSpaceEdit();
+void obviousEscapes();
+void inputHistogram();
 void foldLines(int);
 void syntaxCheck();
 
 #endif /* CHAPTER1_H */
-

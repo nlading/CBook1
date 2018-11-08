@@ -15,15 +15,15 @@ void variableRanges() {
     printf("CHAR MAX: %d\n", CHAR_MAX);
     printf("INT MIN: %d\n", INT_MIN);
     printf("INT MAX: %d\n", INT_MAX);
-    printf("LONG MIN: %d\n", LONG_MIN);
-    printf("LONG MAX: %d\n", LONG_MAX);
+    printf("LONG MIN: %ld\n", LONG_MIN);
+    printf("LONG MAX: %ld\n", LONG_MAX);
     printf("SIGNED CHAR MIN: %d\n", SCHAR_MIN);
     printf("SIGNED CHAR MAX: %d\n", SCHAR_MAX);
     printf("SHRT MIN: %d\n", SHRT_MIN);
     printf("SHRT MAX: %d\n", SHRT_MAX);
     printf("UNSIGNED INT Max: %d\n", UINT_MAX);
     printf("UNSIGNED CHAR MAX: %d\n", UCHAR_MAX);
-    printf("UNSIGNED Long MAX: %d\n", ULONG_MAX);
+    printf("UNSIGNED Long MAX: %ld\n", ULONG_MAX);
     printf("UNSIGNED SHORT MAX: %d\n", USHRT_MAX);
 }
 
@@ -31,6 +31,6 @@ void variableRanges() {
  * Exercise 2-3, page 45 - Convert a string of hexadecimal digits to its
  * equivalent value.
  */
-int htoi(int s){
-
+int htoi(char s){
+  return (int) s;
 }

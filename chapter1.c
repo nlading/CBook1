@@ -53,7 +53,7 @@ int celConvert() {
  * Fahrenheit to Celsius conversion using a FOR loop
  * Print Fahrenheit to Celsius table for Fahr = 0, 20, ..., 300
  */
-int tempConvertForLoop(){
+void tempConvertForLoop(){
     int fahr;
 
     printf("Fahrenheit to Celsius Conversion Table\n");
@@ -74,7 +74,7 @@ int tempConvertForLoop(){
  * input: This is a new line (hit enter key)
  * output: This is a new line\n
  */
-int fileCopy() {
+void fileCopy() {
     int c;
     long nc = 0;    /* string counter */
 
@@ -90,7 +90,7 @@ int fileCopy() {
  * Exercise 1-8 - Count blanks, tabs, and newlines
  * ctrl-d to exit
  */
-int whiteSpaceCounter() {
+void whiteSpaceCounter() {
     int bc = 0, tc = 0, nc = 0;
     int c;
 
@@ -112,7 +112,7 @@ int whiteSpaceCounter() {
 /*
  * Exercise 1-9 - Replace multiple white space sections with a single space
  */
-int singleSpaceEdit() {
+void singleSpaceEdit() {
     int c;
     int sc = 0;     /* space counter, tracks when multiple spaces occur */
 
@@ -136,7 +136,7 @@ int singleSpaceEdit() {
  * Exercise 1-10 - Obvious Escapes
  * Cannot manage backspace. Apparently "beyond programmatic control"
  */
-int obviousEscapes(){
+void obviousEscapes(){
     int c;
 
     while ((c = getchar()) != EOF){
@@ -153,7 +153,7 @@ int obviousEscapes(){
  * Produces a horizontal and a vertical histogram of the lengths
  * of words in an input.
  */
-int inputHistogram() {
+void inputHistogram() {
     int c, i, j;
     int ndigit[UPPER];
     int len = 0, max = 0;
@@ -291,7 +291,6 @@ void foldLines(int maxlength){
 void syntaxCheck() {
     int c, i, j;
     int lineCount = 1;
-    int startParenthesis = 0, endParaenthesis = 0;
     char currLine[UPPER];
     int lineLen = 0;
 
