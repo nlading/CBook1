@@ -198,6 +198,23 @@ unsigned rightrot(unsigned x, int n)
   return x;
 }
 
+/*
+  Exercise 2-10, page 53 - Rewrite the function 'lower' which converts upper
+  case letters to lower case, with a conditional expression instead of if-else
+*/
+char lower(char c)
+{
+  return ('A' <= c && c <= 'Z') ? c+32 : c;
+}
+
+int bitcount(unsigned n)
+{
+  int b;
+  for (b = 0; n != 0; n >>= 1)
+      b++;
+  return b;
+}
+
 int bitsetcount(unsigned n)
 {
   int b;

@@ -49,13 +49,18 @@ int main() {
     int result = any(s1, s2);
     int setbits_result = setbits(65535, 15, 4, 5);
     unsigned rotate_result = rightrot(x, n);
-    */
+
     char s1[] = "This is the first string";
     char s2[] = "xyz";
     unsigned x = 555;
     int p = 5;
     int n = 3;
     unsigned y = 19;
-    int result = bitsetcount(555);
+    */
+    char c[5] = {'A', 'a', 'y', '\?', '*'};
+    for (int i = 0; c[i] != '\0'; ++i)
+    {
+      printf("%c converted to: %c\n", c[i], lower(c[i]));
+    }
     return 0;
 }
