@@ -133,3 +133,29 @@ unsigned setbits(unsigned x, int p, int n, unsigned y)
   */
   return (x & ((~0 << (p+1)) | (~(~0 << (p+1-n))))) | ((y & ~(~0 << n)) << (p+1-n));
 }
+
+/*
+  Exercise 2-7, page 49: return x with the n bits beginning at position p
+  inverted.
+*/
+unsigned invert(unsigned x, int p, int n)
+{
+  /*
+    To invert 1 to 0:
+      AND with 0
+      XOR with 1
+    To invert 0 to 1:
+      AND with 0
+      OR with 1
+      XOR with 1
+    Common thread: XOR n bits beginning at position p with all 1s
+  */
+  /*
+  Step 1: Create n bits set to 1
+    ~(~0 << (n))
+  Step 2: Shift 1 bits to position p
+    ~(~0 << (n)) << (p+1-n)
+  Step 3: XOR with x
+  */
+  return (x ^ (~(~0 << (n)) << (p+1-n)));
+}
