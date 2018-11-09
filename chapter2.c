@@ -85,3 +85,51 @@ void variableRanges() {
    /* Display Result */
    printf("Result: %s\n", s1);
  }
+
+/*
+  Exercise 2-5 - Return the first location in string s1 where any character
+  from the string s2 occurs, or -1 is s1 contains no characters from s2.
+
+  Function is case-independent, meaning H = h
+ */
+ int any(char s1[], char s2[])
+ {
+   int pos = -1;    /* The position of any found character */
+   int i, j;
+
+   for (i = 0; s1[i] != '\0'; ++i)
+   {
+     for (j = 0; s2[j] != '\0'; ++j)
+     {
+       if (tolower(s1[i]) == tolower(s2[j]))
+       {
+         pos = i;
+         break;
+       }
+     }
+     if (pos >= 0)
+      break;
+   }
+
+   return (int) pos;
+ }
+
+ /*
+ Exercise 2-6, page 49 - Set n bits at position p in x to the rightmost n bits
+ if y and return x.
+ */
+unsigned setbits(unsigned x, int p, int n, unsigned y)
+{
+  /*
+  Step 1: Create an all-1's value the length of p-n to have trailing 1s:
+    ~(~0 << (p+1-n))
+  Step 2: Isolate n bits in y and shift to position p
+    ((y & ~(~0 << n)) << (p+1-n))
+  Step 3: OR isolated y with trailing 1s
+    (~(~0 << (p+1-n))) | (((y & ~(~0 << n)) << (p+1-n)))
+  Step 4: OR isolated y with a series of shifted 1s to account for MSBs in x
+    ((~0 << (p+1))) | (~(~0 << (p+1-n))) | (((y & ~(~0 << n)) << (p+1-n)))
+  Step 5: Set n bits in x at position p to y with AND
+  */
+  return (x & ((~0 << (p+1)) | (~(~0 << (p+1-n))))) | ((y & ~(~0 << n)) << (p+1-n));
+}

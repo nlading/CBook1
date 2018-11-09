@@ -45,10 +45,12 @@ int main() {
     /* Chapter 2 */
     /*
     variableRanges();
+    squeeze();
+    int result = any(s1, s2);
+    int setbits_result = setbits(65535, 15, 4, 5);
     */
     char s1[] = "This is the first string";
-    char s2[] = "Howdy partner";
-    squeeze();
+    char s2[] = "xyz";
 
     return 0;
 }

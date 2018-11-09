@@ -16,5 +16,7 @@
 
 void variableRanges();
 void squeeze();
+int any(char s1[], char s2[]);
+unsigned setbits(unsigned x, int p, int n, unsigned y);
 
 #endif /* CHAPTER2_H */
