@@ -25,6 +25,9 @@ int binsearch(int x, int v[], int n) {
 /*
   Exercise 3-1: Rewrite binsearch() such that it requires only one
   test per loop
+
+  According to my tests, there is no difference in runtime. However, my test pc
+  is very very powerful
 */
 int binsearch2(int x, int v[], int n)
 {
