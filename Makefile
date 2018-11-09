@@ -51,14 +51,15 @@ CC = gcc
 # -Wall	turns on most, but not all, Compiler warnings
 CFLAGS = -g -Wall
 
-objects = main.o chapter1.o chapter2.o common.o
+objects = main.o chapter1.o chapter2.o chapter3.o common.o
 
 edit: $(objects)
 	gcc -o edit $(objects)
 
-main.o: common.h chapter1.h chapter2.h
+main.o: common.h chapter1.h chapter2.h chapter3.h
 chapter1.o: common.h
 chapter2.o: common.h
+chapter3.o: common.h
 
 clean:
 	rm edit $(objects)
