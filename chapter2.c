@@ -157,5 +157,51 @@ unsigned invert(unsigned x, int p, int n)
     ~(~0 << (n)) << (p+1-n)
   Step 3: XOR with x
   */
+  if ((p+1-n) < 0)
+    return x;   /* Protect against invalid parameters */
   return (x ^ (~(~0 << (n)) << (p+1-n)));
+}
+
+/*
+  Exercise 2-8, page 49: Return the value x rotated to the right n positions
+
+  Will assume rotation with carry.
+*/
+unsigned rightrot(unsigned x, int n)
+{
+  /*
+    When an integer is rotated to the right one position, a "carry" bit is
+    produced by the LSB being extended out of the integer. In rotation with
+    carry, this bit then becomes the MSB of the integer. Thus, for each shift,
+    the carry bit must be isolated, shifted to the MSB position of the
+    incomming integer and inserted back into the integer.
+
+    When an integer is right shifted, vacated bits are always filled with 0.
+      0 OR 0 = 0
+      1 OR 0 = 1
+    So the isolated and shifted carry bit must be OR'd with the shifted integer.
+  */
+
+  /*
+    Step 1: Isolate the LSB
+      (x & 1)
+    Step 2: Shift isolated LSB left, the length of x
+      (x & 1) << bitcount(x)
+    Step 3: OR the shifted bit back into the integer
+      x | (x & 1) << bitcount(x)
+  */
+  int length = bitcount(x);
+  for (int i = 0; i < n; i++)
+  {
+    x = (x >> 1) | ((x & 1) << (length-1));
+  }
+  return x;
+}
+
+int bitcount(unsigned n)
+{
+  int b;
+  for (b = 0; n != 0; n >>= 1)
+      b++;
+  return b;
 }

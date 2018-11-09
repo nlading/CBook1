@@ -52,10 +52,10 @@ int main() {
     char s1[] = "This is the first string";
     char s2[] = "xyz";
     unsigned x = 555;
-    int p = 8;
+    int p = 5;
     int n = 3;
     unsigned y = 19;
-    unsigned result = invert(x, p, n);
+    unsigned result = rightrot(x, n);
     printf("Result: %u\n", result);
     return 0;
 }
