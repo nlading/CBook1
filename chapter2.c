@@ -198,10 +198,12 @@ unsigned rightrot(unsigned x, int n)
   return x;
 }
 
-int bitcount(unsigned n)
+int bitsetcount(unsigned n)
 {
   int b;
-  for (b = 0; n != 0; n >>= 1)
-      b++;
+  for (b = 0; n != 0; n &= (n-1)){
+    printf("%u\n", n);
+    b++;
+  }
   return b;
 }

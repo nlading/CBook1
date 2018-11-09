@@ -48,6 +48,7 @@ int main() {
     squeeze();
     int result = any(s1, s2);
     int setbits_result = setbits(65535, 15, 4, 5);
+    unsigned rotate_result = rightrot(x, n);
     */
     char s1[] = "This is the first string";
     char s2[] = "xyz";
@@ -55,7 +56,6 @@ int main() {
     int p = 5;
     int n = 3;
     unsigned y = 19;
-    unsigned result = rightrot(x, n);
-    printf("Result: %u\n", result);
+    int result = bitsetcount(555);
     return 0;
 }
