@@ -10,5 +10,7 @@
 
  int binsearch(int x, int v[], int n);
  int binsearch2(int x, int v[], int n);
+ void itoa(int n, char s[]);
+ void reverse(char s[]);
 
  #endif /* CHAPTER3_H */

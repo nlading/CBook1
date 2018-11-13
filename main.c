@@ -13,6 +13,8 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
+#include <limits.h>
 #include "common.h"
 #include "chapter1.h"
 #include "chapter2.h"
@@ -77,7 +79,7 @@ int main() {
     for (int i = 0; i <= MAXELEMENT; i++)
       v[i] = i;
 
-    /* Perform process
+    // Perform process
     for (i = 0, time_taken = clock(); i <= 100000000; i++)
       result1 = binsearch(-1, v, MAXELEMENT);
     time_taken = clock() - time_taken;
@@ -85,7 +87,7 @@ int main() {
     double time_spent = (unsigned long)time_taken / CLOCKS_PER_SEC;
     printf("Time consumed v1: %ld\n", time_spent);
 
-    /* Perform process
+    // Perform process
     for (i = 0, time_taken = clock(); i <= 100000000; i++)
       result2 = binsearch2(-1, v, MAXELEMENT);
     time_taken = clock() - time_taken;
@@ -95,6 +97,10 @@ int main() {
 
     printf("Result 1: %d\nResult 2: %d\n", result1, result2);
     */
+    char instring[100];
+    int n = -pow(2, INT_MAX-2);
+    itoa(n, instring);
+    printf("Original: %d\nResult: %s", n, instring);
 
     return 0;
 }
