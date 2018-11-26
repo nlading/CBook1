@@ -14,6 +14,8 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#define MAXLINE 1000
+
 void resetStringArray(char *, int);
 
 #endif /* COMMON_H */

@@ -19,9 +19,7 @@
 #include "chapter1.h"
 #include "chapter2.h"
 #include "chapter3.h"
-
-
-#define MAXELEMENT 20000
+#include "chapter4.h"
 
 /*
  *
@@ -96,11 +94,28 @@ int main() {
     printf("Time consumed v2: %ld\n", time_spent);
 
     printf("Result 1: %d\nResult 2: %d\n", result1, result2);
-    */
     char instring[100];
     int n = -pow(2, INT_MAX-2);
     itoa(n, instring);
     printf("Original: %d\nResult: %s", n, instring);
+    */
+
+    /* Chapter 4 */
+    char source[MAXLINE] = "\
+Ah Love! could you and I with Fate conspire\n\
+To grasp this sorry Scheme of Things entire,\n\
+Would not we shatter it to bits -- and then\n\
+Re-mould it nearer to the Heart\'s Desire!\n\
+    ";
+    char pattern[] = "ould";
+
+    int i;
+
+    printf("Searching for\n\n%s\n\nin\n\n%s\n", pattern, source);
+
+    i = pattern_search(source, pattern);
+    printf("Result: %d", i);
+
 
     return 0;
 }
